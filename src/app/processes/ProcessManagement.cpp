@@ -15,6 +15,7 @@ void ProcessManagement::executeTasks(){
   while(!TaskQueue.empty()){
     std::unique_ptr<Task> taskToExecute = std::move(TaskQueue.front());
     TaskQueue.pop();
-    std::cout<<"Executing task: "<<taskToExecute->toString()
+    std::cout<<"Executing task: "<<taskToExecute->toString()<<std::endl;
+    executeCryption(taskToExecute->toString());
   }
 }
