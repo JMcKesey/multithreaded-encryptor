@@ -9,7 +9,6 @@ IO::IO(const std::string &file_path){
   }
 }
 
-
 std::fstream IO::getFileStream(){
   return std::move(file_stream);
 }
