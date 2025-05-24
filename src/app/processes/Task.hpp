@@ -2,7 +2,7 @@
 #define TASK_HPP
 
 #include <string>
-#include <iostream>
+#include <fstream>
 #include "../fileHandling/IO.hpp"
 #include <sstream>
 
@@ -18,7 +18,7 @@ struct Task {
 
   Task(std::fstream &&stream, Action act, std::string filePath): f_stream(std::move(stream)), action(act), filePath(filePath){}
 
-  std::string toString(){
+  std::string toString() const {
     std::ostringstream oss;
     oss<<filePath<<","<<(action==Action::ENCRYPT? "ENCRYPT": "DECRYPT");
     return oss.str();
@@ -29,7 +29,7 @@ struct Task {
     std::string filePath;
     std::string actionStr;
 
-    if(std::getline(std::cin, filePath, ',') && std::getline(iss, actionStr)) {
+    if(std::getline(iss, filePath, ',') && std::getline(iss, actionStr)) {
       Action action = (actionStr == "ENCRYPT"?Action::ENCRYPT: Action::DECRYPT);
       IO io(filePath);
       std::fstream f_stream = std::move(io.getFileStream());

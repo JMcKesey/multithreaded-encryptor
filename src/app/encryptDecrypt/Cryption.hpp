@@ -3,6 +3,6 @@
 
 #include <string>
 
-int executreCryption(const std::string &taskData);
+int executeCryption(const std::string &taskData);
 
 #endif
