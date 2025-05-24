@@ -1,6 +1,7 @@
 #include "ProcessManagement.hpp"
 #include <iostream>
 #include <cstring>
+#include <unistd.h>
 #include <sys/wait.h>
 #include "../encryptDecrypt/Cryption.hpp"
 

@@ -35,10 +35,10 @@ struct Task {
       std::fstream f_stream = std::move(io.getFileStream());
       if(f_stream.is_open()){
         return Task(std::move(f_stream), action, filePath);
-      }else{
+      } else {
         throw std::runtime_error("Failed to open file " + filePath);
       }
-    } else{
+    } else {
       throw std::runtime_error("Invalid task data format");
     }
   }
