@@ -1,5 +1,7 @@
 #include <iostream>
 #include <filesystem>
+#include <iomanip>
+#include <ctime>
 #include "./src/app/processes/ProcessManagement.hpp"
 #include "./src/app/processes/Task.hpp"
 
@@ -14,7 +16,7 @@ int main(int argc, char *argv[]){
   std::cout<<"Enter the action (encrypt/decrypt): "<<std::endl;
   std::getline(std::cin, action);
 
-  try{
+  try {
     if(fs::exists(directory) && fs::is_directory(directory)){
       ProcessManagement processManagement;
       for(const auto &entry: fs::recursive_directory_iterator(directory)){
@@ -25,17 +27,22 @@ int main(int argc, char *argv[]){
           if(f_stream.is_open()){
             Action taskAction = (action=="ENCRYPT"?Action::ENCRYPT : Action::DECRYPT);
             auto task = std::make_unique<Task>(std::move(f_stream), taskAction, filePath);
+
+            std::time_t t = std::time(nullptr);
+            std::tm* now = std::localtime(&t);
+            std::cout<<"Starting the encryption/decryption at: "<<std::put_time(now, "%H:%M:%S")<<std::endl;
             processManagement.submitToQueue(std::move(task));
-          }else{
+          } else {
             std::cout<<"Unable to open the file: "<<filePath<<std::endl;
           }
         }
       }
-      processManagement.executeTasks();
-    }else{
+    } else {
       std::cout<<"Invalid directory path"<<std::endl;
     }
-  }catch(const fs::filesystem_error &ex){
+  } catch(const fs::filesystem_error &ex){
     std::cout<<"Filesystem error: "<<ex.what()<<std::endl;
   }
+
+  return 0;
 }

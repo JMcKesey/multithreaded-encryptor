@@ -1,6 +1,2 @@
-<<<<<<< HEAD
-# ignore env file
-=======
 # ignore env files
->>>>>>> refs/remotes/origin/master
 *.env
