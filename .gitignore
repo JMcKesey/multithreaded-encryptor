@@ -1,6 +1,2 @@
-# ignore env filed
+# ignore env file
 *.env
-
-# ignore testing suite
-/test
-*.py
