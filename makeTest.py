@@ -12,4 +12,5 @@ def makeFiles(path):
       file.write(random_string)
       
 if __name__== "__main__":
+  # change to desired directory
   makeFiles("test")
