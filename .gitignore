@@ -1,2 +1,5 @@
 # ignore env files
 *.env
+
+# ignore test files
+/test/*.txt
