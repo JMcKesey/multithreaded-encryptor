@@ -50,5 +50,5 @@ Place your secret key in a file named `.env` in the root of the project
 A python script has been provided in order to conduct your own testing, simply specify the directory in which you would like to place your randomly generated files.
 
 ## ⏳ Future Plans
-* ✅ AES encryption support only using STL
+* ✅ AES encryption support only using STL (currently being implemented)
 * 🌐 QT6 GUI for non-technical users
