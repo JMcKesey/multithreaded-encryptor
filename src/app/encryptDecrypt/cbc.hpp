@@ -11,7 +11,7 @@ class AES_CBC {
     
   private:
     AES aes;
-    std::vector <uint8_t> iv;
+    std::vector <uint8_t> iv; // initial vector
 
     void pad(std::vector<uint8_t>& data);
     void unpad(std::vector<uint8_t>& data);
